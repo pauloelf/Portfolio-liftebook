@@ -64,7 +64,7 @@ export function Menu() {
         <Link
           key={item.id}
           href={item.href}
-          className={`flex items-center w-full gap-1 cursor-pointer select-none rounded-xl px-3 py-1 font-secondary text-sm font-bold text-card-foreground hover:text-secondary-foreground border border-transparent hover:border-ring/30 bg-secondary hover:bg-ring/15 outline-ring group`}
+          className={`flex items-center w-full gap-1 cursor-pointer select-none rounded-xl px-3 py-1 font-secondary text-sm font-bold text-card-foreground hover:text-secondary-foreground border border-transparent hover:border-ring/30 bg-secondary hover:bg-ring/15 outline-ring`}
         >
           {item.icon}
           <span className="md:inline-block hidden">{item.label}</span>
