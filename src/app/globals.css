@@ -37,16 +37,13 @@
 :root {
   --background: oklch(0.98 0.005 95);
   --foreground: oklch(0.15 0.01 20);
-
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.01 20);
-
   --popover: oklch(0.95 0.01 96);
   --popover-foreground: oklch(0.15 0.01 20);
 
   --primary: oklch(0.4 0.14 153);
   --primary-foreground: oklch(1 0 0);
-
   --secondary: oklch(0.92 0.015 96);
   --secondary-foreground: oklch(0.4 0.14 153);
 

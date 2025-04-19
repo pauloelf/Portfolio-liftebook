@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Libre_Baskerville, Roboto } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
@@ -15,7 +17,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Liftebook | Portfólio",
+  title: "Início | Portfólio - Liftebook",
   description:
     "Desenvolvedor Front-end especializado em JavaScript, TypeScript, Next.js e React. Criando interfaces modernas, performáticas e intuitivas para melhorar a experiência do usuário.",
 };
@@ -26,11 +28,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${libreBaskerville.variable} ${roboto.variable} antialiased`}
+        className={`${libreBaskerville.variable} ${roboto.variable} antialiased bg-secondary`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <main className="container flex flex-col mx-auto p-4 sm:py-6 md:p-8">
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   );
