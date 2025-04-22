@@ -49,6 +49,7 @@ export default function RootLayout({
                   size="icon"
                   variant="secondary"
                   className="cursor-pointer"
+                  aria-label="role para baixo"
                 >
                   <ArrowDown />
                 </Button>

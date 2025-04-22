@@ -71,16 +71,17 @@ export function Menu() {
         </Link>
       ))}
       <div className="h-6 w-0.5 bg-accent"></div>
-      <TooltipItem trigger={theme === "dark" ? "Escuro" : "Claro"}>
+      <TooltipItem trigger={theme === "dark" ? "Claro" : "Escuro"}>
         <Button
           variant="ghost"
           size="icon"
+          aria-label="Alternar tema"
           className="cursor-pointer rounded-xl text-card-foreground hover:text-secondary-foreground bg-secondary hover:bg-ring/15"
           onClick={() =>
             setTheme((prev) => (prev == "dark" ? "light" : "dark"))
           }
         >
-          {hasMounted ? theme === "dark" ? <Sun /> : <Moon /> : null}
+          {hasMounted ? theme === "dark" ? <Sun /> : <Moon /> : <Sun />}
         </Button>
       </TooltipItem>
     </>
