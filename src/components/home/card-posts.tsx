@@ -8,13 +8,7 @@ import {
   CardTitle,
 } from "../ui/card";
 import { ExternalLink } from "lucide-react";
-
-interface CardPostInterface {
-  title: string;
-  description: string;
-  url: string;
-  date: string;
-}
+import { CardPostInterface } from "@/types";
 
 export function CardPost({ title, description, url, date }: CardPostInterface) {
   return (

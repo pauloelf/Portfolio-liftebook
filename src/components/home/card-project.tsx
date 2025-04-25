@@ -9,17 +9,7 @@ import {
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { ExternalLink, Github } from "lucide-react";
-
-interface CardProjectInterface {
-  title: string;
-  description: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  url: string;
-  codeURL: string;
-}
+import { CardProjectInterface } from "@/types";
 
 export function CardProject({
   title,

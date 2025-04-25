@@ -1,15 +1,10 @@
-import { type ReactNode } from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "./ui/tooltip";
-
-interface TooltipItemInterface {
-  trigger: string;
-  children: ReactNode;
-}
+import { TooltipItemInterface } from "@/types";
 
 export function TooltipItem({ trigger, children }: TooltipItemInterface) {
   return (

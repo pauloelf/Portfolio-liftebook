@@ -1,10 +1,5 @@
+import { ButtonLinkInterdace } from "@/types";
 import Link from "next/link";
-import type { ReactNode } from "react";
-
-interface ButtonLinkInterdace {
-  children: ReactNode;
-  href: string;
-}
 
 export function ButtonLink({ children, href }: ButtonLinkInterdace) {
   return (
