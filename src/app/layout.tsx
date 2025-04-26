@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TooltipItem } from "@/components/tooltip-item";
+import { Footer } from "@/components/footer";
 
 const libreBaskerville = Libre_Baskerville({
   variable: "--font-libre-baskerville",
@@ -57,6 +58,7 @@ export default function RootLayout({
             </div>
             {children}
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
