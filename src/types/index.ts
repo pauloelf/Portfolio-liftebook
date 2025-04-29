@@ -3,6 +3,11 @@ export interface ButtonLinkInterdace {
   href: string;
 }
 
+export interface ErrorInterface {
+  title: string;
+  description: string;
+}
+
 export interface CardPostInterface {
   title: string;
   description: string;
