@@ -8,6 +8,11 @@ export interface ErrorInterface {
   description: string;
 }
 
+export interface TooltipItemInterface {
+  trigger: string;
+  children: React.ReactNode;
+}
+
 export interface CardPostInterface {
   title: string;
   description: string;
@@ -26,13 +31,15 @@ export interface CardProjectInterface {
   codeURL: string;
 }
 
-export interface TooltipItemInterface {
-  trigger: string;
-  children: React.ReactNode;
-}
-
 export interface Skill {
   id?: number;
   name: string;
   icon: string;
 }
+
+// login
+
+export type LoginFormType = {
+  email?: string;
+  password?: string;
+};
