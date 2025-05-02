@@ -43,3 +43,11 @@ export type LoginFormType = {
   email?: string;
   password?: string;
 };
+
+// post
+
+export type PostFormType = {
+  title?: string;
+  description?: string;
+  content?: string;
+};
