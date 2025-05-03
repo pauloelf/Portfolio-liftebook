@@ -2,8 +2,10 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { CardProject } from "./card-project";
 import { CardPost } from "./card-posts";
+import { getPosts } from "@/lib/actions";
 
-export function HighlightsSection() {
+export async function HighlightsSection() {
+  const posts = await getPosts();
   return (
     <section>
       <h2 className="text-foreground font-secondary text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
@@ -62,16 +64,25 @@ export function HighlightsSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           aria-labelledby="recent-posts"
         >
-          {Array.from({ length: 2 }).map((_, i) => (
-            <CardPost
-              key={i}
-              title={`Post 0${i + 1}`}
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nobis
-         vero nostrum magni dolorem libero quas perferendis obcaecati."
-              url="#"
-              date="1995-09-01"
-            />
-          ))}
+          {posts.map((post, i) => {
+            if (i < 3) {
+              return (
+                <CardPost
+                  key={post.id}
+                  date={
+                    (post.createdAt &&
+                      new Date(
+                        +post.createdAt?.seconds * 1000
+                      ).toLocaleDateString("pt-BR")) ||
+                    ""
+                  }
+                  title={post.title || ""}
+                  description={post.description || ""}
+                  url={`/blog/:${post.id}`}
+                />
+              );
+            }
+          })}
         </div>
       </div>
     </section>
