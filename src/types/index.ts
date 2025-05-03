@@ -51,3 +51,13 @@ export type PostFormType = {
   description?: string;
   content?: string;
 };
+
+// project
+
+export type ProjectFormType = {
+  title?: string;
+  description?: string;
+  src?: string;
+  url?: string;
+  codeURL?: string;
+};
