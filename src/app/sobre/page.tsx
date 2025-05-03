@@ -17,7 +17,9 @@ export default function AboutPage() {
           />
         </div>
         <div className="animate-fade-right animate-once animate-duration-500 animate-delay-600">
-          <h3 className="font-secondary text-2xl text-ring">Hello, it's me</h3>
+          <h3 className="font-secondary text-2xl text-ring">
+            Hello, it&apos;s me
+          </h3>
           <h1 className="font-secondary text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground">
             Paulo Sérgio
           </h1>

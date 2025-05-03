@@ -20,7 +20,7 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <div>
+      <div className="w-full">
         <SidebarTrigger />
         {children}
       </div>

@@ -13,7 +13,7 @@ import { CardPostInterface } from "@/types";
 export function CardPost({ title, description, url, date }: CardPostInterface) {
   return (
     <article className="flex-1 animate-fade animate-once animate-duration-700 animate-delay-300 animate-ease-in">
-      <Card className="gap-2">
+      <Card className="justify-between h-full">
         <CardHeader className="font-secondary">
           <CardTitle className="uppercase">{title}</CardTitle>
           <CardDescription>{description}</CardDescription>

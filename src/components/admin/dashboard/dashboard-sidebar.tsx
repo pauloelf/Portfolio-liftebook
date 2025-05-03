@@ -88,18 +88,18 @@ export function DashboardSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/posts">
+                  <Link href="/dashboard/posts">
                     <FileText />
                     <span>Todas as Postagens</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/posts/create">
+                  <Link href="/dashboard/posts/create">
                     <Plus />
                     <span>Adicionar Postagem</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -112,18 +112,18 @@ export function DashboardSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/certificates">
+                  <Link href="/dashboard/certificates">
                     <Award />
                     <span>Todos os Certificados</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/certificates/create">
+                  <Link href="/dashboard/certificates/create">
                     <Plus />
                     <span>Adicionar Certificado</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -136,18 +136,18 @@ export function DashboardSidebar() {
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/projects">
+                  <Link href="/dashboard/projects">
                     <Folder />
                     <span>Todos os Projetos</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <a href="/dashboard/projects/create">
+                  <Link href="/dashboard/projects/create">
                     <Plus />
                     <span>Adicionar Projeto</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
