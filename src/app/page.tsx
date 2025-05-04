@@ -23,7 +23,7 @@ export default function Home() {
             melhorar a experiência do usuário.
           </p>
           <div className="flex space-x-2">
-            <ButtonLink href="/sobre">
+            <ButtonLink href="/sobre" target="_self">
               <User2 /> Sobre mim
             </ButtonLink>
           </div>

@@ -1,11 +1,15 @@
 import { ButtonLinkInterdace } from "@/types";
 import Link from "next/link";
 
-export function ButtonLink({ children, href }: ButtonLinkInterdace) {
+export function ButtonLink({
+  children,
+  href,
+  target = "_blank",
+}: ButtonLinkInterdace) {
   return (
     <Link
       href={href}
-      target="_blank"
+      target={target}
       className="flex items-center w-max gap-1 cursor-pointer select-none rounded-xl px-3 py-1 font-secondary text-sm font-bold text-card-foreground hover:text-secondary-foreground border border-ring/50 bg-secondary hover:bg-background outline-ring"
     >
       {children}
