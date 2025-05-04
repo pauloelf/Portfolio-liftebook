@@ -1,7 +1,5 @@
 import { DashboardSidebar } from "@/components/admin/dashboard/dashboard-sidebar";
-import { TokenDelete } from "@/components/token-delete";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { verifyToken } from "@/lib/server/verify-token";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,9 +12,6 @@ export default async function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { valid } = await verifyToken();
-
-  if (!valid) return <TokenDelete />;
   return (
     <SidebarProvider>
       <DashboardSidebar />

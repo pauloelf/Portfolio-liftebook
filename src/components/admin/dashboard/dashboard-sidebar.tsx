@@ -35,12 +35,12 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { auth } from "@/lib/services/firebase";
 import { logoutUser } from "@/lib/actions";
+import { useAuthUser } from "@/lib/hooks/use-auth-user";
 
 export function DashboardSidebar() {
   const { theme, setTheme } = useTheme();
-  const { currentUser } = auth;
+  const user = useAuthUser();
 
   const handleClick = async () => {
     try {
@@ -57,13 +57,13 @@ export function DashboardSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg">
               <Avatar className="h-8 w-8">
-                <AvatarImage src={currentUser?.photoURL || ""} alt="Icon" />
+                <AvatarImage src={user?.photoURL || ""} alt="Icon" />
                 <AvatarFallback>PS</AvatarFallback>
               </Avatar>
               <div className="flex flex-col gap-0.5 leading-none">
                 <span className="font-semibold">Liftebook</span>
                 <span className="text-xs opacity-70">
-                  {currentUser?.email || currentUser?.displayName}
+                  {user?.email || user?.displayName}
                 </span>
               </div>
             </SidebarMenuButton>
