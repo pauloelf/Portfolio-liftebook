@@ -1,17 +1,27 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-export function middleware(req: NextRequest) {
-  const token = req.cookies.get("auth-token")?.value;
-  const { pathname } = req.nextUrl;
+export async function middleware(req: NextRequest) {
+  const { pathname, origin } = req.nextUrl;
+  const session = req.cookies.get("session")?.value;
 
   if (pathname.startsWith("/dashboard")) {
-    if (!token) {
+    if (!session) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+
+    const responseAPI = await fetch(`${origin}/api/login`, {
+      headers: {
+        Cookie: `session=${session}`,
+      },
+    });
+
+    if (responseAPI.status !== 200) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
   }
 
   if (pathname === "/login") {
-    if (token) {
+    if (session) {
       return NextResponse.redirect(new URL("/dashboard", req.url));
     }
   }
