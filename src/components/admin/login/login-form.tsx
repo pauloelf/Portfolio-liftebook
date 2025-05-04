@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,9 +14,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { AlertError } from "../../error";
-import { loginUser } from "@/lib/actions/login-user";
 import { LoginFormType } from "@/types";
 import { handleInputChange } from "@/lib/utils";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/services/firebase";
+import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 
 const LoginSchema = z.object({
   email: z
@@ -29,6 +32,19 @@ const LoginSchema = z.object({
     .min(6, { message: "Mínimo de 6 caracteres" }),
 });
 
+function ButtonWithLoading() {
+  const { pending } = useFormStatus();
+  return (
+    <Button
+      variant="default"
+      type="submit"
+      className="w-full cursor-pointer rounded-xl"
+      disabled={pending}
+    >
+      {pending ? "Entrando..." : "Entrar"}
+    </Button>
+  );
+}
 export function LoginForm() {
   const [formData, setFormData] = useState<LoginFormType>({
     email: "",
@@ -36,27 +52,42 @@ export function LoginForm() {
   });
   const [fieldErrors, setFieldErrors] = useState<LoginFormType>({});
   const [error, setError] = useState("");
-  const [state, formAction, isPending] = useActionState(
-    loginUser as () => Promise<{ err: string }>,
-    {
-      err: "",
-    }
-  );
+  const router = useRouter();
 
-  useEffect(() => {
-    if (state?.err) setError(state.err);
-  }, [state]);
-
-  const handleBeforeSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setError("");
+
     const result = LoginSchema.safeParse(formData);
     if (!result.success) {
-      e.preventDefault();
       const errors = result.error.flatten().fieldErrors;
       setFieldErrors({
         email: errors.email?.[0],
         password: errors.password?.[0],
       });
+      return;
+    }
+
+    try {
+      const userCred = await signInWithEmailAndPassword(
+        auth,
+        formData.email || "",
+        formData.password || ""
+      );
+      const token = await userCred.user.getIdToken();
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (response.status !== 200) {
+        setError("Falha ao autenticar.");
+      }
+      router.push("/dashboard");
+    } catch {
+      setError("E-mail ou senha incorretos.");
     }
   };
 
@@ -68,11 +99,7 @@ export function LoginForm() {
           Login Overlord
         </CardDescription>
       </CardHeader>
-      <form
-        action={formAction}
-        onSubmit={handleBeforeSubmit}
-        className="space-y-4"
-      >
+      <form onSubmit={handleSubmit} className="space-y-4">
         <CardContent className="space-y-4">
           {error && <AlertError title="Ops!" description={error} />}
           <div className="space-y-2">
@@ -116,14 +143,7 @@ export function LoginForm() {
           </div>
         </CardContent>
         <CardFooter>
-          <Button
-            variant="default"
-            type="submit"
-            className="w-full cursor-pointer rounded-xl"
-            disabled={isPending}
-          >
-            {isPending ? "Entrando..." : "Entrar"}
-          </Button>
+          <ButtonWithLoading />
         </CardFooter>
       </form>
     </Card>
