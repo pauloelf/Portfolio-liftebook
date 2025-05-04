@@ -26,7 +26,7 @@ export function CardProject({
             src={image.src}
             alt={image.alt}
             fill
-            className="object-cover"
+            className="object-cover rounded-t-xl"
           />
         </div>
         <div className="flex flex-col justify-between h-2/5 pt-4">

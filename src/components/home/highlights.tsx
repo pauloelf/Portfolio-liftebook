@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import { CardProject } from "./card-project";
 import { CardPost } from "./card-posts";
-import { getPosts } from "@/lib/actions";
+import { getPosts, getProjects } from "@/lib/actions";
 
 export async function HighlightsSection() {
   const posts = await getPosts();
+  const projects = await getProjects();
   return (
     <section>
       <h2 className="text-foreground font-secondary text-2xl sm:text-3xl lg:text-4xl font-bold text-center">
@@ -31,17 +32,23 @@ export async function HighlightsSection() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
           aria-labelledby="recent-projects"
         >
-          {Array.from({ length: 3 }).map((_, i) => (
-            <CardProject
-              key={i}
-              title="Projeto 01"
-              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Est nobis
-         vero nostrum magni dolorem libero quas perferendis obcaecati."
-              codeURL="#"
-              url="#"
-              image={{ alt: "contact-illustration", src: "svgs/contact.svg" }}
-            />
-          ))}
+          {projects.map((project, i) => {
+            if (i < 3) {
+              return (
+                <CardProject
+                  key={project.id}
+                  title={project.title || ""}
+                  description={project.description || ""}
+                  codeURL={project.codeURL || ""}
+                  url={project.url || ""}
+                  image={{
+                    alt: project.title || "",
+                    src: project.src || "",
+                  }}
+                />
+              );
+            }
+          })}
         </div>
       </div>
       <div>
