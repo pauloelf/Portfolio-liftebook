@@ -1,3 +1,4 @@
+import { auth } from "firebase-admin";
 import { initializeApp, cert, getApps } from "firebase-admin/app";
 
 const firebaseAdminConfig = {
@@ -7,6 +8,8 @@ const firebaseAdminConfig = {
     privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
   }),
 };
+
+export { auth };
 
 export const app =
   getApps().length === 0 ? initializeApp(firebaseAdminConfig) : getApps()[0];

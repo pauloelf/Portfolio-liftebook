@@ -1,4 +1,4 @@
-import { auth } from "firebase-admin";
+import { auth } from "@/lib/services/firebase-admin";
 import { cookies, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -27,8 +27,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   return NextResponse.json({}, { status: 200 });
 }
+
 export async function GET(req: NextRequest) {
-  const session = (await cookies()).get("session")?.value || "";
+  const session = (await cookies()).get("session")?.value;
 
   if (!session) {
     return NextResponse.json({ isLogged: false }, { status: 401 });
