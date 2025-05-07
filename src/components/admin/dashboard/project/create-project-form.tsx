@@ -139,7 +139,7 @@ export function CreateProjectForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="content">Imagem</Label>
+          <Label htmlFor="src">Imagem</Label>
           <Input
             id="src"
             name="src"
@@ -159,7 +159,7 @@ export function CreateProjectForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="content">URL</Label>
+          <Label htmlFor="url">URL</Label>
           <Input
             id="url"
             name="url"
@@ -179,7 +179,7 @@ export function CreateProjectForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="content">URL Github</Label>
+          <Label htmlFor="codeURL">URL Github</Label>
           <Input
             id="codeURL"
             name="codeURL"
