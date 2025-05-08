@@ -1,7 +1,7 @@
 export interface ButtonLinkInterdace {
   children: React.ReactNode;
   href: string;
-  target: "_blank" | "_self";
+  target?: "_blank" | "_self";
 }
 
 export interface ErrorInterface {
