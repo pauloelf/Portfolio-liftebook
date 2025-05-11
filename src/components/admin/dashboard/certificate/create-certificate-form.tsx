@@ -8,7 +8,7 @@ import { z } from "zod";
 import { AlertError } from "@/components/error";
 import { AlertSuccess } from "@/components/success";
 import { handleInputChange } from "@/lib/utils";
-import { createCertificate } from "@/lib/actions/create-certificate";
+import { createCertificate } from "@/lib/actions";
 
 const CreateCertificateSchema = z.object({
   src: z

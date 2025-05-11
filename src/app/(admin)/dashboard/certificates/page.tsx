@@ -1,5 +1,5 @@
 import { AllCertificates } from "@/components/admin/dashboard/certificate/all-certificates";
-import { getCertificates } from "@/lib/actions/get-certificates";
+import { getCertificates } from "@/lib/actions";
 
 export default async function AllCertificatesPage() {
   const certificados = await getCertificates();
