@@ -12,6 +12,8 @@ export async function Post({ id }: { id: string }) {
   const post = await getPost(id);
 
   if (!post) return <p>Carregando...</p>;
+  const formattedText = post.content?.split("\\n\\n");
+
   return (
     <div className="container mx-auto py-10 animate-fade-down animate-once animate-duration-700 animate-delay-300 animate-ease-in-out">
       <Card className="max-w-3xl mx-auto">
@@ -29,7 +31,13 @@ export async function Post({ id }: { id: string }) {
         </CardHeader>
         <CardContent>
           <div className="font-secondary">
-            <p>{post.content}</p>
+            {formattedText?.map((text, id) => (
+              <p key={text + id}>
+                {text}
+                <br />
+                <br />
+              </p>
+            ))}
           </div>
         </CardContent>
         <CardFooter className="border-t pt-4 text-sm text-muted-foreground font-primary">
