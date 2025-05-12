@@ -85,7 +85,7 @@ export async function HighlightsSection() {
                   }
                   title={post.title || ""}
                   description={post.description || ""}
-                  url={`/blog/:${post.id}`}
+                  url={`/blog/${post.id}`}
                 />
               );
             }
