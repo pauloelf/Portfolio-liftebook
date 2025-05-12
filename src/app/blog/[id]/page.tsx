@@ -1,6 +1,8 @@
 import { Post } from "@/components/blog/post";
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+type Params = Promise<{ id: string }>;
+
+export default async function PostPage({ params }: { params: Params }) {
   const id = (await params).id;
 
   return (
