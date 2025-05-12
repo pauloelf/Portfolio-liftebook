@@ -1,8 +1,8 @@
 import { auth } from "@/lib/services/firebase-admin";
 import { cookies, headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST() {
   const authorization = (await headers()).get("Authorization");
   if (authorization?.startsWith("Bearer ")) {
     const idToken = authorization.split("Bearer ")[1];
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   return NextResponse.json({}, { status: 200 });
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const session = (await cookies()).get("session")?.value;
 
   if (!session) {
