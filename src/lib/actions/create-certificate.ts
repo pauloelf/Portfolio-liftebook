@@ -1,8 +1,7 @@
 "use server";
 
-import { addDoc, collection } from "firebase/firestore";
 import { z } from "zod";
-import { db } from "../services/firebase";
+import { db } from "../services/firebase-admin";
 
 const CreateCertificateSchema = z.object({
   src: z
@@ -30,7 +29,7 @@ export async function createCertificate(
   const { src } = result.data;
 
   try {
-    await addDoc(collection(db, "certificates"), {
+    await db.collection("certificates").add({
       src,
     });
 

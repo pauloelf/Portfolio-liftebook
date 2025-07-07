@@ -1,9 +1,8 @@
 "use server";
 
 import { PostFormType } from "@/types";
-import { addDoc, collection } from "firebase/firestore";
 import { z } from "zod";
-import { db } from "../services/firebase";
+import { db } from "../services/firebase-admin";
 
 const CreatePostSchema = z.object({
   title: z
@@ -38,7 +37,7 @@ export async function createPost(state: PostFormType, formData: FormData) {
   const { title, description, content } = result.data;
 
   try {
-    await addDoc(collection(db, "posts"), {
+    await db.collection("posts").add({
       title,
       description,
       content,

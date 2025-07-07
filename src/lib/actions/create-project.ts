@@ -1,9 +1,9 @@
 "use server";
 
 import { ProjectFormType } from "@/types";
-import { addDoc, collection } from "firebase/firestore";
+
 import { z } from "zod";
-import { db } from "../services/firebase";
+import { db } from "../services/firebase-admin";
 
 const CreateProjectSchema = z.object({
   title: z
@@ -53,7 +53,7 @@ export async function createProject(
   const { title, description, url, src, codeURL } = result.data;
 
   try {
-    await addDoc(collection(db, "projects"), {
+    await db.collection("projects").add({
       title,
       description,
       src,
